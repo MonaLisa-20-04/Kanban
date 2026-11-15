@@ -1,0 +1,177 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+html{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root{
+    --bg-color: #000000;
+    --bg-color-button: #1a1a1a;
+    --primary-text-color: #f2e4e4;
+    --bg-color-task-section: #1a1a1a;
+    --bg-color-task: #2d2d2d;
+    --delete-color: #ff4d4d;
+
+    /* padding variables */
+    --navbar-padding: 15px 30px;
+    --section-padding: 15px 30px;
+    --padding-small: 5px;
+    --padding-medium: 10px;
+    --padding-large: 15px;
+    --padding-xlarge: 20px;
+    --padding-xxlarge: 30px;
+    --padding-xxxlarge: 50px;
+
+    /* border radius variables */
+    --border-radius-small: 5px;
+    --border-radius-medium: 10px;
+    --border-radius-large: 15px;
+    --border-radius-xlarge: 20px;
+    --border-radius-xxlarge: 30px;
+}
+
+body{
+    background-color: var(--bg-color);
+    color: var(--primary-text-color);
+}
+
+main{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+nav{
+    padding: var(--navbar-padding);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav button{
+    background-color: var(--bg-color-button);
+    color: var(--primary-text-color);
+    border: none;
+    outline: none;
+    padding: var(--padding-medium) var(--padding-large);
+    cursor: pointer;
+    border-radius: var(--border-radius-medium);
+}
+
+section{
+    padding: var(--section-padding);
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    gap: var(--padding-xxlarge);
+}
+
+section .task-column{
+    background-color: var(--bg-color-task-section);
+    flex-grow: 1;
+    width: 100%;
+    padding: var(--padding-large);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-large);
+    border-radius: var(--border-radius-medium);
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+section .hover-over{
+    border: 2px dashed var(--primary-text-color);
+    scale: 1.02;
+}
+
+section .task-column .heading{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section .task-column .task{
+    background-color: var(--bg-color-task);
+    padding: var(--padding-medium);
+    border-radius: var(--border-radius-medium);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-medium);
+    cursor: grab;
+}
+
+section .task-column .task button{
+    align-self: flex-end;
+    background-color: var(--delete-color);
+    color: var(--primary-text-color);
+    border: none;
+    outline: none;
+    padding: var(--padding-small) var(--padding-medium);
+    cursor: pointer;
+    border-radius: var(--border-radius-small);
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active{
+    display: flex;
+}
+
+.modal .bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(6, 6, 6, 0.352);
+    backdrop-filter: blur(5px);
+}
+
+.modal .center{
+    background-color: var(--bg-color-task-section);
+    padding: var(--padding-xxlarge);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-large);
+    border-radius: var(--border-radius-medium);
+    z-index: 10;
+}
+
+.modal .center input, .modal .center textarea{
+    background-color: var(--bg-color-task);
+    color: var(--primary-text-color);
+    border: none;
+    outline: none;
+    padding: var(--padding-medium);
+    border-radius: var(--border-radius-medium);
+}
+
+.modal .center button{
+    background-color: var(--bg-color-task);
+    color: var(--primary-text-color);
+    border: none;
+    outline: none;
+    padding: var(--padding-medium) var(--padding-large);
+    cursor: pointer;
+    border-radius: var(--border-radius-medium);
+    align-self: center;
+    width: fit-content;
+}
